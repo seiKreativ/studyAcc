@@ -15,7 +15,7 @@ const { ensureAuthenticated } = require('./config/auth');
 const { getDashboard, getWelcome, getProfile } = require('./routes/index');
 const { addExamPage, addExam, deleteExam, editExam, editExamPage, getExams } = require('./routes/exams');
 const { getLogin, postLogin, getRegister, postRegister, getLogout } = require('./routes/users');
-const { getUebungsblaetter, showUebungsblaetter, addUebungsblattPage, addUebungsblatt, deleteUebungsblatt, editUebungsblatt, editUebungsblattPage, getUebungsblatt } = require('./routes/uebungsblaetter');
+const { getUebungsblaetter, showUebungsblaetter, addUebungsblattPage, addUebungsblatt, deleteUebungsblatt, editUebungsblatt, editUebungsblattPage } = require('./routes/uebungsblaetter');
 const { getVorlesungen, addVorlesung, addVorlesungPage, editVorlesung, editVorlesungPage, deleteVorlesung } = require('./routes/vorlesungen');
 
 // Passport config

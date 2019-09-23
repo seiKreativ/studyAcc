@@ -5,18 +5,18 @@ const express = require('express');
 
 module.exports = {
     getUebungsblaetter: (req, res) => {
-        let query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
         if (req.params.name != undefined) {
             var name = req.params.name.replace("%20", " ");
-            query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "' AND lecture = '" + name + "'";
+            query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "' AND lecture = '" + name + "'";
             if (req.params.semester != 0) {
-                query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "' AND semester = " + req.params.semester + " AND lecture = '" + name + "'";
+                query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "' AND semester = " + req.params.semester + " AND lecture = '" + name + "'";
             }
         } else if (req.params.semester != 0) {
-            query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "' AND semester = " + req.params.semester;
+            query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "' AND semester = " + req.params.semester;
         }
         if (req.params.semester == undefined) {
-            query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "'";
+            query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "'";
         }
         // execute query
 
@@ -25,7 +25,7 @@ module.exports = {
                 res.redirect('/');
 
             } else {
-                let query = "SELECT DISTINCT lecture FROM exams.usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                let query = "SELECT DISTINCT lecture FROM usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
                 // execute query
 
                 sql.query(query, (err, lectures) => {
@@ -34,7 +34,7 @@ module.exports = {
 
                     } else {
 
-                        let query2 = "SELECT DISTINCT semester FROM exams.usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                        let query2 = "SELECT DISTINCT semester FROM usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
                         // execute query
 
                         sql.query(query2, (err, semester) => {
@@ -62,7 +62,7 @@ module.exports = {
         });
     },
     addUebungsblattPage: (req, res) => {
-        let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
         // execute query
 
         sql.query(query, (err, result) => {
@@ -71,7 +71,7 @@ module.exports = {
 
             } else {
 
-                let query2 = "SELECT DISTINCT semester FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                let query2 = "SELECT DISTINCT semester FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                 // execute query
 
                 sql.query(query2, (err, result2) => {
@@ -104,12 +104,12 @@ module.exports = {
         let nummer = req.body.nummer;
         let errors = [];
 
-        let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
         // execute query
-        let usernameQuery = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "' AND lecture = '" + vorlesung + "' AND semester = '" + semester + "' AND number = '" + nummer + "'";
+        let usernameQuery = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "' AND lecture = '" + vorlesung + "' AND semester = '" + semester + "' AND number = '" + nummer + "'";
 
         function loadNew() {
-            let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+            let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
             // execute query
 
             sql.query(query, (err, result) => {
@@ -118,7 +118,7 @@ module.exports = {
 
                 } else {
 
-                    let query2 = "SELECT DISTINCT semester FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                    let query2 = "SELECT DISTINCT semester FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                     // execute query
 
                     sql.query(query2, (err, result2) => {
@@ -161,7 +161,7 @@ module.exports = {
                     errors.push({ msg: 'Erreichte Punkte können max. so hoch sein wie die erreichbare Punktezahl' });
                     loadNew();
                 } else {
-                    let query = "INSERT INTO exams.usersheet (email, lecture, number, points, maxPoints, semester) VALUES ('" +
+                    let query = "INSERT INTO usersheet (email, lecture, number, points, maxPoints, semester) VALUES ('" +
                         req.user.email + "', '" + vorlesung + "', " + nummer + ", " + punkte + ", " + punkteIns + ", " + semester + ")";
                     sql.query(query, (err, result) => {
                         if (err) {
@@ -182,7 +182,7 @@ module.exports = {
         let number2 = req.params.number;
 
 
-        let query = "SELECT * FROM exams.usersheet WHERE semester = " + semester2 + " AND number = " + number2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
+        let query = "SELECT * FROM usersheet WHERE semester = " + semester2 + " AND number = " + number2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
 
         sql.query(query, (err, result) => {
             if (err) {
@@ -207,7 +207,7 @@ module.exports = {
         let errors = [];
 
         function loadNew() {
-            let query = "SELECT * FROM exams.usersheet WHERE semester = " + semester2 + " AND number = " + number2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
+            let query = "SELECT * FROM usersheet WHERE semester = " + semester2 + " AND number = " + number2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
 
             sql.query(query, (err, result) => {
                 if (err) {
@@ -234,7 +234,7 @@ module.exports = {
             loadNew();
         } else {
 
-            let query = "UPDATE exams.usersheet SET semester = '" + semester + "', lecture = '" + vorlesung + "', number = '" + nummer + "', points = '" + punkte + "', maxPoints = '" + punkteIns + "' WHERE semester = '" + semester2 + "' AND number = '" + number2 + "' AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
+            let query = "UPDATE usersheet SET semester = '" + semester + "', lecture = '" + vorlesung + "', number = '" + nummer + "', points = '" + punkte + "', maxPoints = '" + punkteIns + "' WHERE semester = '" + semester2 + "' AND number = '" + number2 + "' AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
             sql.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
