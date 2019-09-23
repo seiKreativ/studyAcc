@@ -3,7 +3,7 @@ const express = require('express');
 
 module.exports = {
     getVorlesungen: (req, res) => {
-        let query = "SELECT * FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT * FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
         // execute query
 
         sql.query(query, (err, result) => {
@@ -48,7 +48,7 @@ module.exports = {
                 });
             } else {
                 // send the player's details to the database
-                let query = "INSERT INTO exams.userlecture (email, vorlesung, semester, leistungspunkte) VALUES ('" +
+                let query = "INSERT INTO userlecture (email, vorlesung, semester, leistungspunkte) VALUES ('" +
                     req.user.email + "', '" + name + "', '" + semester + "', '" + leistungspunkte + "')";
                 sql.query(query, (err, result) => {
                     if (err) {
@@ -69,7 +69,7 @@ module.exports = {
         let name2 = req.params.name.replace("%20", " ");
 
 
-        let query = "SELECT * FROM exams.userlecture WHERE semester = " + semester2 + " AND vorlesung = '" + name2 + "' AND email = '" + req.user.email + "'";
+        let query = "SELECT * FROM userlecture WHERE semester = " + semester2 + " AND vorlesung = '" + name2 + "' AND email = '" + req.user.email + "'";
 
         sql.query(query, (err, result) => {
             if (err) {
@@ -100,17 +100,17 @@ module.exports = {
                 errors: errors
             });
         } else {
-            let query = "UPDATE exams.userlecture SET semester = " + semester + ", vorlesung = '" + name + "', leistungspunkte = " + leistungspunkte + " WHERE semester = " + semester2 + " AND vorlesung = '" + name2 + "' AND email = '" + req.user.email + "'";
+            let query = "UPDATE userlecture SET semester = " + semester + ", vorlesung = '" + name + "', leistungspunkte = " + leistungspunkte + " WHERE semester = " + semester2 + " AND vorlesung = '" + name2 + "' AND email = '" + req.user.email + "'";
             sql.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
                 }
-                let query = "UPDATE exams.sheet SET semester = " + semester + ", lecture = '" + name + " WHERE semester = " + semester2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
+                let query = "UPDATE sheet SET semester = " + semester + ", lecture = '" + name + " WHERE semester = " + semester2 + " AND lecture = '" + name2 + "' AND email = '" + req.user.email + "'";
                 sql.query(query, (err, result) => {
                     if (err) {
                         return res.status(500).send(err);
                     }
-                    let query = "UPDATE exams.exams SET semester = " + semester + ", name = '" + name + "', leistungspunkte = " + leistungspunkte + " WHERE semester = " + semester2 + " AND name = '" + name2 + "' AND username = '" + req.user.email + "'";
+                    let query = "UPDATE exams SET semester = " + semester + ", name = '" + name + "', leistungspunkte = " + leistungspunkte + " WHERE semester = " + semester2 + " AND name = '" + name2 + "' AND username = '" + req.user.email + "'";
                     sql.query(query, (err, result) => {
                         if (err) {
                             return res.status(500).send(err);

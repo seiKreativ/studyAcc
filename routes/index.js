@@ -5,7 +5,7 @@ const router = express.Router();
 
 module.exports = {
     getDashboard: (req, res) => {
-        let query = "SELECT * FROM exams.exams WHERE username = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT * FROM exams WHERE username = '" + req.user.email + "'"; // query database to get all the players
         // execute query
 
         sql.query(query, (err, exams) => {
@@ -13,7 +13,7 @@ module.exports = {
                 res.redirect('/');
 
             } else {
-                query = "SELECT * FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                query = "SELECT * FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                 // execute query
 
                 sql.query(query, (err, lectures) => {
@@ -21,7 +21,7 @@ module.exports = {
                         res.redirect('/');
 
                     } else {
-                        query = "SELECT * FROM exams.usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                        query = "SELECT * FROM usersheet WHERE email = '" + req.user.email + "'"; // query database to get all the players
                         // execute query
 
                         sql.query(query, (err, sheets) => {

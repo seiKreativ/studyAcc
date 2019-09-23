@@ -61,10 +61,10 @@ app.use((req, res, next) => {
 
 //SQL-Verbindung
 var sql = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "exams"
+    host: "remotemysql.com",
+    user: "oUyCsXhXyi",
+    password: "IzgttKiqZr",
+    database: "oUyCsXhXyi"
 });
 
 sql.connect((err) => {

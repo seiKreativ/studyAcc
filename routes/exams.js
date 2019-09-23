@@ -5,7 +5,7 @@ const fs = require('fs');
 module.exports = {
     addExamPage: (req, res) => {
         let errors = [];
-        let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
         // execute query
 
         sql.query(query, (err, result) => {
@@ -14,7 +14,7 @@ module.exports = {
 
             } else {
 
-                let query2 = "SELECT DISTINCT semester FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                let query2 = "SELECT DISTINCT semester FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                 // execute query
 
                 sql.query(query2, (err, result2) => {
@@ -49,7 +49,7 @@ module.exports = {
         sql.query(leistungspunkteQuery, (err, result) => {
             if (err || !(result.length > 0)) {
                 errors.push({ msg: 'Es existiert keine Vorlesung mit diesem Namen in diesem Semester' });
-                let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                 // execute query
 
                 sql.query(query, (err, result) => {
@@ -58,7 +58,7 @@ module.exports = {
 
                     } else {
 
-                        let query2 = "SELECT DISTINCT semester FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                        let query2 = "SELECT DISTINCT semester FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                         // execute query
 
                         sql.query(query2, (err, result2) => {
@@ -89,7 +89,7 @@ module.exports = {
                     }
                     if (result.length > 0) {
                         errors.push({ msg: 'Exam already exists' });
-                        let query = "SELECT DISTINCT vorlesung FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                        let query = "SELECT DISTINCT vorlesung FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                         // execute query
 
                         sql.query(query, (err, result) => {
@@ -98,7 +98,7 @@ module.exports = {
 
                             } else {
 
-                                let query2 = "SELECT DISTINCT semester FROM exams.userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
+                                let query2 = "SELECT DISTINCT semester FROM userlecture WHERE email = '" + req.user.email + "'"; // query database to get all the players
                                 // execute query
 
                                 sql.query(query2, (err, result2) => {
@@ -123,7 +123,7 @@ module.exports = {
                         });
                     } else {
                         // send the player's details to the database
-                        let query = "INSERT INTO exams.exams (semester, name, leistungspunkte, note, username) VALUES ('" +
+                        let query = "INSERT INTO exams (semester, name, leistungspunkte, note, username) VALUES ('" +
                             semester + "', '" + vorlesung + "', '" + lp + "', '" + note + "', '" + req.user.email + "')";
                         sql.query(query, (err, result) => {
                             if (err) {
@@ -146,7 +146,7 @@ module.exports = {
         let name2 = req.params.name.replace("%20", " ");
 
 
-        let query = "SELECT * FROM exams.exams WHERE semester = " + semester2 + " AND name = '" + name2 + "' AND username = '" + req.user.email + "'";
+        let query = "SELECT * FROM exams WHERE semester = " + semester2 + " AND name = '" + name2 + "' AND username = '" + req.user.email + "'";
 
         sql.query(query, (err, result) => {
             if (err) {
@@ -173,7 +173,7 @@ module.exports = {
         let errors = [];
 
 
-        let query = "UPDATE exams.exams SET note = '" + note + "' WHERE exams.semester = '" + semester2 + "' AND exams.name = '" + name2 + "' AND exams.username = '" + req.user.email + "'";
+        let query = "UPDATE exams SET note = '" + note + "' WHERE semester = '" + semester2 + "' AND name = '" + name2 + "' AND username = '" + req.user.email + "'";
         sql.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -183,9 +183,9 @@ module.exports = {
 
     },
     deleteExam: (req, res) => {
-        let deleteExamQuery = "DELETE FROM exams WHERE exams.semester = '" +
-            req.params.semester + "' AND exams.name = '" +
-            req.params.name.replace("%20", " ") + "' AND exams.username = '" + req.user.email + "'";
+        let deleteExamQuery = "DELETE FROM exams WHERE .semester = '" +
+            req.params.semester + "' AND name = '" +
+            req.params.name.replace("%20", " ") + "' AND  username = '" + req.user.email + "'";
         sql.query(deleteExamQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -194,7 +194,7 @@ module.exports = {
         });
     },
     getExams: (req, res) => {
-        let query = "SELECT * FROM exams.exams WHERE username = '" + req.user.email + "'"; // query database to get all the players
+        let query = "SELECT * FROM exams WHERE username = '" + req.user.email + "'"; // query database to get all the players
         // execute query
 
         sql.query(query, (err, result) => {
@@ -202,7 +202,7 @@ module.exports = {
                 res.redirect('/');
 
             } else {
-                res.render('exams.ejs', {
+                res.render('ejs', {
                     name: req.user.name,
                     email: req.user.email,
                     exams: result,
