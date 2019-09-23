@@ -29,7 +29,7 @@ const Users = db.define('users', {
             type: Sequelize.STRING,
             allowNull: false,
         }
-    }, { timestamps: false }
+    }
 
 
 )

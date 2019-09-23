@@ -100,7 +100,6 @@ module.exports = {
     getRegister: (req, res) => { res.render('register.ejs') },
     getLogin: (req, res) => { res.render('login.ejs') },
     postRegister: (req, res) => {
-        console.log('!');
         const { name, email, password, password2 } = req.body;
         let errors = [];
 
@@ -128,7 +127,6 @@ module.exports = {
                 password2
             });
         } else {
-            console.log('!');
             // Validation passed
             User.findOne({
                     where: {
