@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 
 const db = new Sequelize(
-    'exams',
-    'root',
-    '',
+    'oUyCsXhXyi',
+    'oUyCsXhXyi',
+    'IzgttKiqZr',
 
     {
         dialect: 'mysql',
-        host: 'localhost',
+        host: 'remotemysql.com',
         operatorsAliases: false,
         logging: false
     }
