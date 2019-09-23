@@ -49,10 +49,19 @@
         <div class="card">
             <div class="card-body rounded px-5 ">
                 <h5 class="card-title ">Übungsblätter:</h5>
-
-                <h1 class="card-text " style="font-size: 5rem ">
-                    136
-                </h1>
+                <%
+                var ges = 0;
+                
+                sheets.forEach(element => {
+                    ges += 1;
+                    
+                });
+                
+            
+            %>
+                    <h1 class="card-text " style="font-size: 5rem ">
+                        <%=ges%>
+                    </h1>
             </div>
         </div>
     </div>
