@@ -202,7 +202,7 @@ module.exports = {
                 res.redirect('/');
 
             } else {
-                res.render('ejs', {
+                res.render('exams.ejs', {
                     name: req.user.name,
                     email: req.user.email,
                     exams: result,
