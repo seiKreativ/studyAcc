@@ -1,0 +1,34 @@
+<table class="table table-responsive-lg table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Semester</th>
+            <th scope="col">Name</th>
+            <th scope="col">LP</th>
+            <th scope="col">Note</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% exams.forEach((exam, index) => { %>
+            <tr>
+                <th scope="row">
+                    <%= exam.semester %>
+                </th>
+                <td>
+                    <%= exam.name %>
+                </td>
+                <td>
+                    <%= exam.leistungspunkte %>
+                </td>
+                <td>
+                    <%= exam.note %>
+                </td>
+                <td>
+                    <a href="/exams/editExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-success">Edit</a>
+                    <a href="/exams/deleteExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+                </tr>
+    </tbody>
+
+</table>

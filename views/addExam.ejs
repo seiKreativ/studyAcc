@@ -1,0 +1,67 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Add Exam</h1>
+
+
+
+    </div>
+    <% include ./partials/messages %>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <form class="addExamForm" action="/exams/addExam" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="semester">Semester</label>
+                        <select id="semester" name="semester" class="form-control" required>
+                        <option selected disabled>Choose Semester</option>
+                        <% semester.forEach(test=> { %>
+                            <option ><%= test.semester %></option>
+                            <% }) %>
+                    </select>
+                    </div>
+
+
+
+                    <div class="form-group col-md-4">
+                        <label for="vorlesung"> Vorlesung: </label>
+                        <select id="vorlesung" name="vorlesung" class="form-control" required>
+                                <option selected disabled>Choose Vorlesung</option>
+                                <% lectures.forEach(test=> { %>
+                                    <option ><%= test.vorlesung %></option>
+                                    <% }) %> 
+                            </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="note"> Note: </label>
+                        <select id="note" name="note" class="form-control" required>
+                            <option selected disabled>Choose Note</option>
+                            <option>1.0</option>
+                            <option>1.3</option>
+                            <option>1.7</option>
+                            <option>2.0</option>
+                            <option>2.3</option>
+                            <option>2.7</option>
+                            <option>3.0</option>
+                            <option>3.3</option>
+                            <option>3.7</option>
+                            <option>4.0</option>
+                            <option>4.3</option>
+                            <option>4.7</option>
+                            <option>5.0</option>
+                        </select>
+                    </div>
+                </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="col align-self-center">
+                <button type="submit" class="btn btn-success btn-block">Add Exam</button>
+            </div>
+        </div>
+        </div>
+
+        </form>
+
+
+        </div>
+</main>

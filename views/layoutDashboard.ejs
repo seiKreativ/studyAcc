@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <link rel="Stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="Stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" />
+    <link rel="Stylesheet" href="/css/layoutDashboard.css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">StudyAcc</a>
+
+        <a class="navbar" href="/users/logout" style="color: white; text-decoration-line: none; ">Sign Out</a>
+
+
+
+
+    </nav>
+    <div class="wrapper d-flex">
+        <div class="sideMenu bg-mattBlackLight">
+            <div class="sidebar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                dashboard
+                            </i><span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/exams" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                        storage
+                                </i><span class="text">Klausuren</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/uebungsblaetter" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                    import_contacts
+                            </i><span class="text">Übungsblätter</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/vorlesungen" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                        event
+                                </i><span class="text">Vorlesungen</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/profile" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                person
+                            </i><span class="text">User Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2">
+                            <i class="material-icons icon">
+                                insert_chart
+                            </i><span class="text">Charts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2"><i class="material-icons icon">
+                                settings
+                            </i><span class="text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <%- body %>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/layoutDashboard.js"></script>
+</body>
+
+</html>

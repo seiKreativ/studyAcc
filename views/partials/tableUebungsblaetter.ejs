@@ -1,0 +1,47 @@
+<% if (sheets[0] != undefined) {  %>
+    <table class="table table-responsive-lg table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Semester</th>
+                <th scope="col">Vorlesung</th>
+                <th scope="col">Nummer</th>
+                <th scope="col">Punkte</th>
+                <th scope="col">Punkte insg.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% sheets.forEach((sheet, index) => { %>
+                <tr>
+                    <th scope="row">
+                        <%= sheet.semester %>
+                    </th>
+                    <td>
+                        <%= sheet.lecture %>
+                    </td>
+                    <td>
+                        <%= sheet.number %>
+                    </td>
+                    <td>
+                        <%= sheet.points %>
+                    </td>
+                    <td>
+                        <%= sheet.maxPoints %>
+                    </td>
+                    <td>
+                        <a href="/uebungsblaetter/editUebungsblatt/<%= sheet.semester %>/<%= sheet.lecture %>/<%= sheet.number %>" class="btn btn-sm btn-success">Edit</a>
+                        <a href="/uebungsblaetter/deleteUebungsblatt/<%= sheet.semester %>/<%= sheet.lecture %>/<%= sheet.number %>" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+                    </tr>
+        </tbody>
+
+    </table>
+
+    <% } else { %>
+        <div class="container">
+            <p>
+                Bitte fügen Sie zuerst eine Vorlesung und dann Übungsblätter zu dieser Vorlesung hinzu.
+            </p>
+        </div>
+        <% } %>
