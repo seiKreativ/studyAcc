@@ -149,7 +149,8 @@ module.exports = {
                         const newUser = new User({
                             name,
                             email,
-                            password
+                            password,
+
                         });
                         console.log('new user');
                         // Hash Password

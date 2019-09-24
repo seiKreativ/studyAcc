@@ -56,4 +56,12 @@ module.exports = {
 
         });
     },
+    editProfile: (req, res) => {
+        res.render('profile.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            layout: 'layoutDashboard',
+
+        });
+    },
 };

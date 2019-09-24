@@ -6,12 +6,13 @@ $(document).ready(function() {
 
 });
 
-function calcSchnitt(exams) {
-    var noteIns;
-    var lpIns;
-    exams.forEach(element => {
-        noteIns += element.note * element.leistungspunkte;
-        lpIns += element.leistungspunkte;
-    });
-    return noteIns / lpIns;
-}
+$(document).ready(function() {
+    var adjustSidebar = function() {
+        $(".sidebar").slimScroll({
+            height: document.documentElement.clientHeight - $(".navbar").outerHeight()
+        });
+    };
+    $(".sideMenuToggler").on("click", function() {
+        $(".wrapper").toggleClass("active");
+    })
+})

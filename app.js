@@ -12,7 +12,7 @@ const { ensureAuthenticated } = require('./config/auth');
 
 
 
-const { getDashboard, getWelcome, getProfile } = require('./routes/index');
+const { getDashboard, getWelcome, getProfile, editProfile } = require('./routes/index');
 const { addExamPage, addExam, deleteExam, editExam, editExamPage, getExams } = require('./routes/exams');
 const { getLogin, postLogin, getRegister, postRegister, getLogout } = require('./routes/users');
 const { getUebungsblaetter, showUebungsblaetter, addUebungsblattPage, addUebungsblatt, deleteUebungsblatt, editUebungsblatt, editUebungsblattPage } = require('./routes/uebungsblaetter');
@@ -108,6 +108,7 @@ app.post('/uebungsblaetter/addUebungsblatt', ensureAuthenticated, addUebungsblat
 app.post('/uebungsblaetter/editUebungsblatt/:semester/:name/:number', ensureAuthenticated, editUebungsblatt);
 app.post('/vorlesungen/addVorlesung', ensureAuthenticated, addVorlesung);
 app.post('/vorlesungen/editVorlesung/:semester/:name', ensureAuthenticated, editVorlesung);
+app.get('/profile', ensureAuthenticated, editProfile);
 
 
 

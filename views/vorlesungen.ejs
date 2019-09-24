@@ -1,18 +1,13 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h3">Vorlesungen</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3">Vorlesungen</h1>
 
 
-        <button type="button" class="btn btn-secondary" onclick="location.href = '/vorlesungen/addVorlesung'">Add Vorlesung</button>
-    </div>
+    <button type="button" class="btn btn-secondary" onclick="location.href = '/vorlesungen/addVorlesung'">Add Vorlesung</button>
+</div>
 
-    <div class="container" style="height: 30em; overflow: auto;">
-
-
-        <% include ./partials/tableVorlesungen %>
-
-    </div>
+<div class="container" style="height: 30em; overflow: auto;">
 
 
-</main>
+    <% include ./partials/tableVorlesungen %>
+
+</div>
