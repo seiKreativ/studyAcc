@@ -1,40 +1,39 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Add Übungsblatt</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Add Übungsblatt</h1>
 
 
 
-    </div>
-    <% include ./partials/messages %>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+</div>
+<% include ./partials/messages %>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-            <form class="addUebungsblattForm" action="/uebungsblaetter/addUebungsblatt" method="POST">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="semester">Semester:</label>
-                        <select id="semester" name="semester" class="form-control" required>
+        <form class="addUebungsblattForm" action="/uebungsblaetter/addUebungsblatt" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="semester">Semester:</label>
+                    <select id="semester" name="semester" class="form-control" required>
                         <option selected disabled>Choose Semester</option>
                         <% semester.forEach(test=> { %>
                             <option ><%= test.semester %></option>
                             <% }) %>
                     </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="vorlesung"> Vorlesung: </label>
-                        <select id="vorlesung" name="vorlesung" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="vorlesung"> Vorlesung: </label>
+                    <select id="vorlesung" name="vorlesung" class="form-control" required>
                                 <option selected disabled>Choose Vorlesung</option>
                                 <% lectures.forEach(test=> { %>
                                     <option ><%= test.vorlesung %></option>
                                     <% }) %> 
                             </select>
-                    </div>
-
-
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="nummer">Nummer:</label>
-                        <select id="nummer" name="nummer" class="form-control" required>
+
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="nummer">Nummer:</label>
+                    <select id="nummer" name="nummer" class="form-control" required>
                                 <option selected disabled>Choose Nummer</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -50,28 +49,27 @@
                                 <option>12</option>
                                 <option>13</option>
                             </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                        <label for="punkte">Erreichte Punkte:</label>
-                        <input type="text" class="form-control" name="punkte" id="punkte" placeholder="Punkte erreicht" required>
-                        <small id="lpHelp" class="form-text text-muted">Bitte eine ganze Zahl eingeben (bspw. 4, 5)</small>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="punkteIns">Mögliche Punkte:</label>
-                        <input type="text" class="form-control" name="punkteIns" id="punkteIns" placeholder="Punkte insgesamt" required>
-                        <small id="lpHelp" class="form-text text-muted">Bitte eine ganze Zahl eingeben (bspw. 4, 5)</small>
-                    </div>
                 </div>
-                <div class="form-row justify-content-center">
-                    <div class="col align-self-center">
-                        <button type="submit" class="btn btn-success btn-block">Add Übungsblatt</button>
-                    </div>
+
+                <div class="form-group col-md-4">
+                    <label for="punkte">Erreichte Punkte:</label>
+                    <input type="text" class="form-control" name="punkte" id="punkte" placeholder="Punkte erreicht" required>
+                    <small id="lpHelp" class="form-text text-muted">Bitte eine ganze Zahl eingeben (bspw. 4, 5)</small>
                 </div>
-        </div>
+                <div class="form-group col-md-4">
+                    <label for="punkteIns">Mögliche Punkte:</label>
+                    <input type="text" class="form-control" name="punkteIns" id="punkteIns" placeholder="Punkte insgesamt" required>
+                    <small id="lpHelp" class="form-text text-muted">Bitte eine ganze Zahl eingeben (bspw. 4, 5)</small>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col align-self-center">
+                    <button type="submit" class="btn btn-success btn-block">Add Übungsblatt</button>
+                </div>
+            </div>
+    </div>
 
-        </form>
+    </form>
 
 
-        </div>
-</main>
+    </div>

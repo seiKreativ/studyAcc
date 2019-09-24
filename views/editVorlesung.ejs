@@ -1,18 +1,17 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Add Vorlesung</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Add Vorlesung</h1>
 
 
 
-    </div>
-    <% include ./partials/messages %>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+</div>
+<% include ./partials/messages %>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-            <form class="editVorlesungForm" action="/vorlesungen/editVorlesung/<%= vorlesung.semester %>/<%= vorlesung.vorlesung %>" method="POST">
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label for="semester">Semester</label>
-                        <select id="semester" name="semester" class="form-control" required>
+        <form class="editVorlesungForm" action="/vorlesungen/editVorlesung/<%= vorlesung.semester %>/<%= vorlesung.vorlesung %>" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="semester">Semester</label>
+                    <select id="semester" name="semester" class="form-control" required>
                             <option selected> <%= vorlesung.semester %></option>
                             <option>1</option>
                             <option>2</option>
@@ -27,10 +26,10 @@
                             <option>11</option>
                             <option>12</option>
                         </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="leistungspunkte">Leistungspunkte</label>
-                        <select id="leistungspunkte" name="leistungspunkte" class="form-control" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="leistungspunkte">Leistungspunkte</label>
+                    <select id="leistungspunkte" name="leistungspunkte" class="form-control" required>
                             <option selected><%= vorlesung.leistungspunkte %></option>
                             <option>1</option>
                             <option>2</option>
@@ -53,22 +52,21 @@
                             <option>19</option>
                             <option>20</option>
                     </select>
-                    </div>
-
-                    <div class="form-group col-md-8">
-                        <label for="name">Name der Veranstaltung: </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Name der Veranstaltung" value="<%= vorlesung.vorlesung %>" required>
-                    </div>
                 </div>
-                <div class="form-row justify-content-center">
-                    <div class="col align-self-center">
-                        <button type="submit" class="btn btn-success btn-block">Edit Vorlesung</button>
-                    </div>
+
+                <div class="form-group col-md-8">
+                    <label for="name">Name der Veranstaltung: </label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name der Veranstaltung" value="<%= vorlesung.vorlesung %>" required>
                 </div>
-        </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col align-self-center">
+                    <button type="submit" class="btn btn-success btn-block">Edit Vorlesung</button>
+                </div>
+            </div>
+    </div>
 
-        </form>
+    </form>
 
 
-        </div>
-</main>
+    </div>
