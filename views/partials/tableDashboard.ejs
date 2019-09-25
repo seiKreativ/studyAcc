@@ -8,27 +8,33 @@
         </tr>
     </thead>
     <tbody>
-        <% exams.forEach((exam, index) => { %>
-            <tr>
-                <th scope="row">
-                    <%= exam.semester %>
-                </th>
-                <td>
-                    <%= exam.name %>
-                </td>
-                <td>
-                    <%= exam.leistungspunkte %>
-                </td>
-                <td>
-                    <%= exam.note %>
-                </td>
-                <td>
-                    <a href="/exams/editExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-success">Edit</a>
-                    <a href="/exams/deleteExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
-            <% }) %>
-                </tr>
+        <% exams.forEach((exam, index) => { 
+            if (exam.note <= 2.3) {%>
+            <tr class="table-success">
+                <% } else if (exam.note <= 4.0) {%>
+                    <tr class="table-warning">
+                        <% } else if (exam.note > 4.0) {%>
+                            <tr class="table-danger">
+                                <% } %>
+                                    <th scope="row">
+                                        <%= exam.semester %>
+                                    </th>
+                                    <td>
+                                        <%= exam.name %>
+                                    </td>
+                                    <td>
+                                        <%= exam.leistungspunkte %>
+                                    </td>
+                                    <td>
+                                        <%= exam.note %>
+                                    </td>
+                                    <td>
+                                        <a href="/exams/editExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="/exams/deleteExam/<%= exam.semester %>/<%= exam.name %>" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                            </tr>
+                            <% }) %>
+                    </tr>
     </tbody>
 
 </table>

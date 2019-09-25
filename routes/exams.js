@@ -183,7 +183,7 @@ module.exports = {
 
     },
     deleteExam: (req, res) => {
-        let deleteExamQuery = "DELETE FROM exams WHERE .semester = '" +
+        let deleteExamQuery = "DELETE FROM exams WHERE semester = '" +
             req.params.semester + "' AND name = '" +
             req.params.name.replace("%20", " ") + "' AND  username = '" + req.user.email + "'";
         sql.query(deleteExamQuery, (err, result) => {

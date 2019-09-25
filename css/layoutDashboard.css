@@ -48,7 +48,7 @@ body,
 }
 
 .wrapper {
-    margin-top: 2.85rem;
+    margin-top: 3.7rem;
 }
 
 .wrapper .sideMenu {
@@ -56,7 +56,7 @@ body,
     top: 0;
     bottom: 0;
     left: 0;
-    margin: 2.85rem auto auto;
+    margin: 3.7rem auto auto;
     width: 12.5rem;
     -webkit-transition: all ease 0.25s;
     transition: all ease 0.25s;
@@ -86,7 +86,7 @@ body,
         margin-top: 0rem;
     }
     .wrapper.active .sideMenu {
-        width: 3.25rem;
+        width: 0rem;
     }
     .wrapper.active .sideMenu .nav-link {
         text-align: center;
@@ -99,6 +99,9 @@ body,
     }
     .wrapper.active .content {
         margin-left: 3.25rem;
+    }
+    .nav-link:hover {
+        background-color: transparent;
     }
 }
 

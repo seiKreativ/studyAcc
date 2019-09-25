@@ -152,14 +152,14 @@ module.exports = {
                             password,
 
                         });
-                        console.log('new user');
+
                         // Hash Password
                         bcrypt.genSalt(10, (error, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
                             if (err) throw err;
                             // set Password to hashed
                             newUser.password = hash;
                             // Save user
-                            console.log('new userpassword hashed');
+
                             newUser.save()
                                 .then((user) => {
                                     req.flash('success_msg', 'You are now registered and can log in');

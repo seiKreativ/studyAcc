@@ -1,66 +1,105 @@
 <style>
     .card {
-        width: 17rem;
+        width: 14.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
         margin-top: 0.5rem;
         background-color: #303337
+    }
+    
+    .card-text {
+        font-size: 4.5rem;
+    }
+    
+    #ects {
+        font-size: 3rem;
     }
 </style>
 
 <div class="container">
     <div class="row mx-auto">
         <div class="card">
-            <div class=" card-body px-5 rounded ">
+            <div class=" card-body  px-4 rounded ">
                 <h5 class="card-title ">Klausuren:</h5>
                 <%
     var klausurenGeschrieben = 0;
     
     exams.forEach(element => {
-        klausurenGeschrieben += 1; 
+        if (element.note <= 4.0) {
+            klausurenGeschrieben += 1; 
+        }
     });
 
 %>
 
-                    <h1 class="card-text " style="font-size: 5rem ">
+                    <h1 class="card-text">
                         <%= klausurenGeschrieben %>
                     </h1>
             </div>
         </div>
-        <div class="card ">
-            <div class="card-body rounded px-5 ">
+        <div class="card">
+            <div class="card-body  px-4 rounded">
                 <h5 class="card-title ">Schnitt: </h5>
                 <%
     var noteIns = 0;
     var lpIns = 0;
     exams.forEach(element => {
-        noteIns = noteIns + element.note * element.leistungspunkte;
-        lpIns += element.leistungspunkte;
+        if (element.note <= 4.0) {
+            noteIns = noteIns + element.note * element.leistungspunkte;
+        lpIns += element.leistungspunkte; 
+        }
+        
     });
     var schnitt = noteIns / lpIns;
 
 %>
 
-                    <h1 class="card-text " style="font-size: 5rem ">
+                    <h1 class="card-text ">
                         <%= Math.round(schnitt * 100) / 100 %>
                     </h1>
             </div>
         </div>
         <div class="card">
-            <div class="card-body rounded px-5 ">
-                <h5 class="card-title ">Übungsblätter:</h5>
+            <div class="card-body rounded px-4">
+                <h5 class="card-title ">Übungsblätter</h5>
                 <%
-                var ges = 0;
-                
-                sheets.forEach(element => {
-                    ges += 1;
+                    var ges = 0;
                     
-                });
+                    sheets.forEach(element => {
+                        ges += 1;
+                        
+                    });
+                    
                 
-            
-            %>
-                    <h1 class="card-text " style="font-size: 5rem ">
+                %>
+                    <h1 class="card-text ">
                         <%=ges%>
+                    </h1>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body rounded  px-4 ">
+                <h5 class="card-title ">ECTS:</h5>
+                <p class="card-subtitle">bestanden/vrstl.</p>
+                <%
+                    var gesBestanden = 0;
+                    var gesVorlesungen = 0; 
+                    
+                    exams.forEach(element => {
+                        if (element.note <= 4.0) {
+                            gesBestanden += element.leistungspunkte; 
+                        }                    
+                    });
+    
+                    lectures.forEach(element => {
+                        gesVorlesungen += element.leistungspunkte; 
+                    });
+                    
+                
+                %>
+                    <h1 class="card-text" id="ects">
+                        <%=gesBestanden%> /
+                            <%=gesVorlesungen%>
                     </h1>
             </div>
         </div>
